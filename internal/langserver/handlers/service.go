@@ -248,6 +248,8 @@ func (svc *service) Assigner() (jrpc2.Assigner, error) {
 			return handle(ctx, req, svc.CompletionItemResolve)
 		},
 		"textDocument/hover": func(ctx context.Context, req *jrpc2.Request) (interface{}, error) {
+			svc.logger.Println("Hoooooover")
+
 			err := session.CheckInitializationIsConfirmed()
 			if err != nil {
 				return nil, err
@@ -342,6 +344,8 @@ func (svc *service) Assigner() (jrpc2.Assigner, error) {
 			return handle(ctx, req, svc.DidChangeWatchedFiles)
 		},
 		"textDocument/references": func(ctx context.Context, req *jrpc2.Request) (interface{}, error) {
+			svc.logger.Println("references lel")
+
 			err := session.CheckInitializationIsConfirmed()
 			if err != nil {
 				return nil, err
@@ -349,6 +353,16 @@ func (svc *service) Assigner() (jrpc2.Assigner, error) {
 
 			return handle(ctx, req, svc.References)
 		},
+		"textDocument/rename": func(ctx context.Context, req *jrpc2.Request) (interface{}, error) {
+			svc.logger.Println("rename lel")
+
+			err := session.CheckInitializationIsConfirmed()
+			if err != nil {
+				return nil, err
+			}
+
+			return handle(ctx, req, svc.References)
+		},	
 		"workspace/executeCommand": func(ctx context.Context, req *jrpc2.Request) (interface{}, error) {
 			err := session.CheckInitializationIsConfirmed()
 			if err != nil {

@@ -103,7 +103,7 @@ func (c *ServeCommand) Run(args []string) int {
 		logger.Printf("Custom request concurrency set to %d", c.reqConcurrency)
 	}
 
-	logger.Printf("Starting tofu-ls %s", c.Version)
+	logger.Printf("Starting custom tofu-ls %s", c.Version)
 
 	ctx = lsctx.WithLanguageServerVersion(ctx, c.Version)
 
