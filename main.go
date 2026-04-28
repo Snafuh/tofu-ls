@@ -13,7 +13,10 @@ import (
 	"github.com/opentofu/tofu-ls/internal/cmd"
 )
 
+import "fmt"
+
 func main() {
+	fmt.Print("🚀 CUSTOM TOFU-LS BUILD")
 	c := &cli.CLI{
 		Name:       "tofu-ls",
 		Version:    version,
